@@ -60,9 +60,7 @@
             <li class="page-item"><a class="page-link" href="?page={{ students.previous_page_number }}">Previous</a>
             </li>
             {% endif %}
-            <span>{{ students.number }}</span>
-            <span>of</span>
-            <span>{{ students.paginator.num_pages }}</span>
+
             {% if students.has_next %}
             <li class="page-item"><a class="page-link" href="?page={{ students.next_page_number }}">Next</a></li>
             <li class="page-item"><a class="page-link" href="?page={{ students.paginator.num_pages }}">Last</a></li>
