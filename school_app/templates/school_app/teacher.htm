@@ -1,0 +1,68 @@
+{% extends 'school_app/main.htm' %}
+{% block content %}
+
+<div class="container">
+    <br>
+    <h1>Employees List</h1>
+
+    <div class="row">
+        {% for i in emp %}
+        {% load static %}
+
+        <div class="col-sm-6">
+            <div class="card mb-3" style="max-width: auto;">
+                <div class="row no-gutters">
+                    <div class="card-header">
+                        <ul class="nav nav-pills card-header-pills">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Update</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">View</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4" style="max-width: 50px; max-height: auto; ">
+                        <img src="{{i.picture.url}}" class="card-img">
+                    </div>
+
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>UID: </strong>{{i.id}}-EAC | <strong>Name:</strong>
+                                {{i.f_name}}
+                                {{i.l_name}}</li>
+                            <li class="list-group-item"><strong>Department:</strong> {{i.department}}
+                                <!-- 
+                    <li class="list-group-item"></li>
+                -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        {% endfor %}
+    </div>
+
+
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <nav aria-label="Page navigation example">
+            {% if emp.has_previous %}
+            <a class="page-link" href="?page=1">First</a>
+            <a class="page-link" href="?page={{ emp.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span class="page-item">{{ emp.number }}</span><span>of</span> <span
+                class="page-item">{{ emp.paginator.num_pages }}</span>
+            {% if emp.has_next %}
+            <a class="page-link" href="?page={{ emp.next_page_number }}">Next</a>
+            <a class="page-link" href="?page={{ emp.paginator.num_pages }}">Last</a>
+            {% endif %}
+        </nav>
+    </div>
+    <!--End of Paginantion-->
+</div>
+{% endblock %}

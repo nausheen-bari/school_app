@@ -1,0 +1,35 @@
+{% extends 'school_app/main.htm' %}
+{% block content %}
+
+<div>
+    <button><a href="{% url 'home' %}">Back</a></button>
+    <button><a href="{% url  'student_update' students.id %}">Update</a></button>
+</div>
+{% load static %}
+<img src="{{students.picture.url}}" style="padding: 5px; margin: 5px; width: auto; height: 75px; border: 0.5px solid;">
+<br> <strong>UID: </strong>{{students.id}}-COL1<br>
+<strong>Name:</strong> {{students.f_name}} {{students.l_name}}
+<br>
+<strong>Gender:</strong> {{students.gender}}
+<br>
+<strong>Native Language:</strong> {{students.language}}
+<br>
+<strong>Date Of Birth: </strong>{{students.dob}}
+<br>
+<strong></strong>
+<br>
+<strong>Grade:</strong> {{students.grade}}
+<br>
+<strong>Course:</strong> {{students.course}}
+<br>
+<strong>Level:</strong> {{students.course.level}}<br>
+<strong>Graduation date:</strong> {{students.grad_date}}<br>
+<strong>email:</strong> {{students.email}}
+<br>
+<strong>Phone:</strong> {{students.phone}}<br>
+<strong>Parents details:</strong> {{students.parent_details}}
+<br>
+<hr>
+
+
+{% endblock %}

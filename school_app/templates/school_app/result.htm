@@ -1,0 +1,48 @@
+{% extends 'school_app/main.htm' %}
+{% block content %}
+
+<h1>Search Result For: {{query}}</h1>
+<div class="row">
+    {% for i in students %}
+    {% load static %}
+
+    <div class="col-sm-6">
+        <div class="card mb-3" style="max-width: auto;">
+            <div class="row no-gutters">
+                <div class="card-header">
+                    <ul class="nav nav-pills card-header-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url  'student_update' i.id %}">Update</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{% url 'student' i.id %}">View</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4" style="max-width: 50px; max-height: auto; ">
+                    <img src="{{i.picture.url}}" class="card-img">
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>UID: </strong>{{i.id}}-COL1 | <strong>Name:</strong>
+                            {{i.f_name}}
+                            {{i.l_name}}</li>
+                        <li class="list-group-item"><strong>Course:</strong> {{i.course}} | <strong>Level:</strong>
+                            {{i.course.level}}</li>
+                        <li class="list-group-item"><strong>email:</strong> {{i.email}} | <strong>Phone:</strong>
+                            {{i.phone}}</li>
+                        <!-- 
+                    <li class="list-group-item"></li>
+                -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    {% endfor %}
+</div>
+{% endblock %}
